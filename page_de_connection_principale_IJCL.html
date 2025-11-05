@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page de Connexion</title>
+    <link rel="stylesheet" href="style/style_pageco_ijcl.css">
+</head>
+<body>
+
+    <div class="bloc">
+        <video autoplay="autoplay" muted="" loop="infinite" src="videos/video_pageco_ijcl.mp4"></video>
+    </div>
+
+    <div id="login-container">
+        <div class="logo-container">
+            <img src="logo_ijcl.png" alt="Logo IJCL" class="main-logo"> <!-- Ajout du logo -->
+        </div>
+        
+        <h1>Connexion</h1>
+        <form action="indexijcl.php" method="post">
+            <div class="input-group">
+                <label for="username">Identifiant :</label>
+                <input type="text" id="username" name="username" placeholder="IJCL_" maxlength="8" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Mot de passe :</label>
+                <input type="password" id="password" name="password" placeholder="********" maxlength="8" required>
+            </div>
+
+            <button type="submit">Se Connecter</button>
+
+            <a href="javascript:history.back()" id="back-link">Revenir</a>
+        </form>
+    </div>
+
+</body>
+</html>
