@@ -7,25 +7,27 @@
 </head>
 <body>
 
-	<div class="bloc">
-		<video autoplay="autoplay" muted="" loop="infinite" src="videos/video_pageco_tc.mp4"></video>
-			</div>   
-	<div id="login-container">
-	 <div class="logo-container">
-            <img src="logo_eil.jpg" alt="Logo IJCL" class="main-logo"> <!-- Ajout du logo -->
+    <div class="bloc">
+        <video autoplay muted loop src="videos/video_pageco_tc.mp4"></video>
+    </div>   
+
+    <div id="login-container">
+        <div class="logo-container">
+            <img src="logo_eil.jpg" alt="Logo IJCL" class="main-logo">
         </div>
-		<h1>Connexion</h1>
-        <form action="indexeil.html" method="post">
-            <label for="username">Identifiant :</label>
-            <input type="text" id="username" name="username" placeholder="EIL_" maxlength="8" required>
-            
-            <label for="password">Mot de passe :</label>
-            <input type="password" id="password" name="password" placeholder="********" maxlength="8" required>
-            
-            <button type="submit">Se Connecter</button>
-        </form>
-</div>
-	
+
+        <h1>Connexion</h1>
+
+        <label for="username">Identifiant :</label>
+        <input type="text" id="username" name="username" placeholder="EIL_" maxlength="8" required>
+
+        <label for="password">Mot de passe :</label>
+        <input type="password" id="password" name="password" placeholder="********" maxlength="8" required>
+
+        <a href="indexeil.html">
+            <button type="button">Se Connecter</button>
+        </a>
+    </div>
+
 </body>
 </html>
-
