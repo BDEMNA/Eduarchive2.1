@@ -1,0 +1,95 @@
+/* Réinitialisation */
+* {
+    margin: 0;
+}
+
+/* Bloc vidéo */
+.bloc {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.bloc video {
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+    top: 50%;
+    left: 50%;
+    z-index: -100;
+    transform: translate(-50%, -50%);
+    
+    filter: blur(4px);
+}
+
+/* Conteneur de connexion */
+#login-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: transparent; /* Suppression du fond blanc */
+    backdrop-filter: blur(8px);
+    color: #ffffff; /* Texte blanc pour un bon contraste */
+    border: 2px solid rgba(255, 255, 255, 0.7); /* Bordure subtile */
+    border-radius: 8px;
+    padding: 40px 25px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 450px;
+}
+
+/* Titre */
+h1 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: left;
+}
+
+/* Champs de saisie */
+input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.2); /* Légère transparence */
+    color: #ffffff;
+    outline: none;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-family: "Times New Roman", serif;
+}
+
+/* Bouton */
+button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 6px;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+button:hover {
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}

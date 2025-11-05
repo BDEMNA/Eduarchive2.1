@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+}
+
+.bloc {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.bloc video {
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+    top: 50%;
+    left: 50%;
+    z-index: -100;
+    transform: translate(-50%, -50%);
+}
+
+#login-container {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(0, -50%);
+    background: linear-gradient(145deg, #e0e0e0, #b0b0b0); /* Gris métallisé plus clair */
+    border: 2px solid #0088cc; /* Bleu technique */
+    border-radius: 30px;
+    padding: 35px;
+    box-shadow: 0 0 20px #0088cc;
+    text-align: center;
+    width: 350px;
+}
+.logo-container {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Style du logo */
+.main-logo {
+    width: 100px; /* Taille réduite pour éviter qu'il prenne trop de place */
+    display: block;
+    margin: 0 auto; /* Centre le logo */
+    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.2));
+}
+
+h1 {
+    margin: 0 0 20px 0;
+    font-size: 24px;
+    color: #0088cc;
+    text-shadow: 0 0 10px #0088cc;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #333; /* Texte plus visible */
+}
+
+input {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #0088cc;
+    border-radius: 5px;
+    background: #ffffff; /* Fond plus clair */
+    color: #333;
+    box-shadow: 0 0 5px #0088cc;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background: linear-gradient(135deg, #0088cc, #005b99);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    box-shadow: 0 0 10px #0088cc;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #00aaff, #0088cc);
+    box-shadow: 0 0 15px #00aaff;
+}
