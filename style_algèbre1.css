@@ -1,0 +1,125 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url("img/maths_bg.jpg") no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    text-align: center;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 50, 0.6);
+    z-index: -1;
+}
+
+header {
+    padding: 20px;
+}
+
+.resources {
+    background: rgba(255, 255, 255, 0.9);
+    color: #003366;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+}
+
+.resources h2 {
+    margin-bottom: 15px;
+}
+
+.resources ul {
+    list-style: none;
+    padding: 0;
+}
+
+.resources li {
+    margin: 10px 0;
+}
+
+.resources a {
+    text-decoration: none;
+    color: #003366;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.resources a:hover {
+    color: #cc0000;
+}
+
+.btn {
+    text-decoration: none;
+    background-color: white;
+    color: #003366;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin: 20px;
+    display: inline-block;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #cc0000;
+    color: white;
+}
+
+/* 📱 Responsivité */
+@media (max-width: 1024px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+    .resources {
+        width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+    .resources {
+        width: 95%;
+        padding: 15px;
+    }
+    .resources h2 {
+        font-size: 1.2rem;
+    }
+    .resources a {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.3rem;
+    }
+    .resources {
+        width: 100%;
+        margin: 10px auto;
+        padding: 10px;
+    }
+    .resources h2 {
+        font-size: 1rem;
+    }
+    .resources a {
+        font-size: 0.9rem;
+        display: block;
+        padding: 8px 0;
+    }
+    .btn {
+        display: block;
+        margin: 10px auto;
+        width: 80%;
+        font-size: 0.9rem;
+    }
+}

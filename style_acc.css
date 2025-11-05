@@ -1,0 +1,118 @@
+/* Bloquer le scroll et appliquer l'image de fond */
+html, body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden; /* empêche le scroll */
+    font-family: Arial, sans-serif;
+    background: url("img/acc.jpg") no-repeat center center fixed; /* ton image */
+    background-size: cover; /* l'image couvre tout l'écran */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 15px;
+}
+
+/* Optionnel : ajouter un voile semi-transparent pour améliorer la lisibilité du texte */
+html::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,50,0.5); /* voile bleu foncé transparent */
+    z-index: -1;
+}
+
+
+.logo {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1.2rem;
+    max-width: 600px;
+}
+
+.btn-container {
+    margin-top: 30px;
+}
+
+.btn {
+    text-decoration: none;
+    background-color: white;
+    color: #003366;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin: 5px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn:hover {
+    background-color: #cc0000;
+    color: white;
+}
+
+/* 📱 Responsivité */
+@media (max-width: 1024px) {
+    h1 {
+        font-size: 2rem;
+    }
+    p {
+        font-size: 1.1rem;
+    }
+    .logo {
+        width: 90px;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+    p {
+        font-size: 1rem;
+        max-width: 90%;
+    }
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        height: auto; /* éviter que le contenu soit coupé sur petits écrans */
+        padding: 20px 10px;
+    }
+    .logo {
+        width: 80px;
+    }
+    h1 {
+        font-size: 1.5rem;
+    }
+    p {
+        font-size: 0.95rem;
+    }
+    .btn-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .btn {
+        width: 80%;
+        margin: 8px 0;
+        font-size: 0.9rem;
+    }
+}

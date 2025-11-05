@@ -1,0 +1,123 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url("img/bibliotheque.jpg") no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    text-align: center;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 50, 0.5); /* voile bleu transparent */
+    z-index: -1;
+}
+
+header {
+    padding: 20px;
+}
+
+.library {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.book {
+    background-color: white;
+    color: #003366;
+    width: 180px;
+    padding: 15px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: block;
+}
+
+.book img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.book h2 {
+    margin-top: 10px;
+    font-size: 1.1rem;
+}
+
+.book:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.book:hover img {
+    transform: scale(1.05);
+}
+
+footer {
+    margin: 20px 0;
+}
+
+.btn {
+    text-decoration: none;
+    background-color: white;
+    color: #003366;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin: 5px;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #cc0000;
+    color: white;
+}
+
+/* 📱 Responsivité */
+@media (max-width: 1024px) {
+    .book {
+        width: 160px;
+    }
+    .book h2 {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .library {
+        gap: 15px;
+    }
+    .book {
+        width: 45%; /* 2 colonnes sur tablette */
+    }
+    .book img {
+        height: 140px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+    .book {
+        width: 90%; /* 1 colonne sur mobile */
+    }
+    .book img {
+        height: 120px;
+    }
+    .btn {
+        display: block;
+        margin: 10px auto;
+        width: 80%;
+    }
+}

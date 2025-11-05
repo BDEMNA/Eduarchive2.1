@@ -1,0 +1,152 @@
+/* Arrière-plan bibliothèque + voile bleu-rouge-bleu */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url("img/bibliotheque.jpg") no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0,51,102,0.7), rgba(204,0,0,0.6), rgba(0,51,102,0.7));
+    z-index: -1;
+}
+
+header {
+    padding: 20px;
+}
+
+.form-section, .search-section {
+    margin: 10px;
+}
+
+input, button {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+input[type="text"], input[type="file"] {
+    max-width: 250px;
+}
+
+button {
+    background-color: #ffcc00;
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ff9900;
+}
+
+.list-section {
+    flex: 1;
+    padding: 20px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: rgba(255,255,255,0.95);
+    color: #003366;
+    margin: 10px auto;
+    padding: 15px;
+    border-radius: 8px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+li .top-line {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+li .actions {
+    margin-top: 10px;
+}
+
+.action-btn {
+    margin-right: 10px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1.2rem;
+}
+
+.download {
+    background-color: #28a745;
+    color: white;
+}
+
+.delete {
+    background-color: #dc3545;
+    color: white;
+}
+
+.download:hover {
+    background-color: #218838;
+}
+
+.delete:hover {
+    background-color: #c82333;
+}
+
+footer {
+    padding: 15px;
+}
+
+.btn {
+    text-decoration: none;
+    background-color: white;
+    color: #003366;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin: 5px;
+}
+
+.btn:hover {
+    background-color: #cc0000;
+    color: white;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(10px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    li {
+        width: 100%;
+    }
+    .top-line {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .actions {
+        margin-top: 10px;
+    }
+}
