@@ -1,7 +1,18 @@
+/* Réinitialisation et base */
 * {
-    margin: 5;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #000;
+}
+
+/* Bloc vidéo en arrière-plan */
 .bloc {
     position: fixed;
     top: 0;
@@ -21,6 +32,7 @@
     left: 0;
 }
 
+/* Conteneur du formulaire */
 #login-container {
     display: flex;
     flex-direction: column;
@@ -31,9 +43,11 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background: rgba(0, 31, 51, 0.8);
-    padding: 30px;
+    padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 200, 255, 0.5);
+    width: 90%;
+    max-width: 400px;
 }
 
 /* Animations */
@@ -52,30 +66,72 @@
     50% { box-shadow: 0 0 20px rgba(0, 200, 255, 1); }
 }
 
-/* Ajout d'une pulsation sur le logo principal */
+/* Logo principal */
 #main-logo {
     width: 120px;
     height: auto;
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
     animation: neon-pulse 3s infinite alternate ease-in-out;
 }
 
-/* Apparition fluide des champs de formulaire */
+/* Champs et bouton */
 input, button {
     animation: fade-in 0.8s ease-in-out;
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
 }
 
-/* Effet lumineux au survol des icônes */
-.logo:hover {
-    animation: glow 1s infinite alternate ease-in-out;
+input {
+    border: 1px solid #00c8ff;
+    background: #001f33;
+    color: #fff;
+    box-shadow: 0 0 5px #00c8ff;
+    outline: none;
 }
 
-/* Clignotement subtil sur le bouton */
+button {
+    font-weight: bold;
+    color: #001f33;
+    background: #00c8ff;
+    border: none;
+    text-transform: uppercase;
+    box-shadow: 0 0 10px #00c8ff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
 button:hover {
+    background: #54d2ff;
+    box-shadow: 0 0 15px #54d2ff;
     animation: neon-pulse 1.5s infinite alternate ease-in-out;
 }
 
-/* Effet de surbrillance des icônes au survol */
+/* Titre */
+h1 {
+    font-size: 1.5rem;
+    color: #00c8ff;
+    text-shadow: 0 0 10px #00c8ff;
+    animation: fade-in 1s ease-in-out;
+    margin-bottom: 1rem;
+}
+
+/* Icônes et logos */
+.logo {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.2);
+    opacity: 0.8;
+    animation: glow 1s infinite alternate ease-in-out;
+}
+
 .logo-link:hover::before {
     content: "";
     position: absolute;
@@ -89,58 +145,43 @@ button:hover {
     box-shadow: 0 0 10px rgba(0, 200, 255, 0.7);
 }
 
-/* Transition fluide du logo */
-.logo {
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+/* Responsive design */
+@media (max-width: 768px) {
+    #login-container {
+        padding: 1.5rem;
+        max-width: 90%;
+    }
+
+    h1 {
+        font-size: 1.25rem;
+    }
+
+    #main-logo {
+        width: 100px;
+    }
+
+    .logo {
+        width: 40px;
+        height: 40px;
+    }
 }
 
-.logo:hover {
-    transform: scale(1.2);
-    opacity: 0.8;
-}
+@media (max-width: 480px) {
+    input, button {
+        font-size: 0.9rem;
+        padding: 0.6rem;
+    }
 
-/* Effet néon sur le titre */
-h1 {
-    font-size: 24px;
-    color: #00c8ff;
-    text-shadow: 0 0 10px #00c8ff;
-    animation: fade-in 1s ease-in-out;
-}
+    h1 {
+        font-size: 1.1rem;
+    }
 
-/* Effet lumineux sur les champs */
-input {
-    width: 80%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #00c8ff;
-    border-radius: 5px;
-    background: #001f33;
-    color: #fff;
-    box-shadow: 0 0 5px #00c8ff;
-    outline: none;
-}
+    #main-logo {
+        width: 80px;
+    }
 
-/* Effet du bouton */
-button {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #001f33;
-    background: #00c8ff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    box-shadow: 0 0 10px #00c8ff;
-}
-
-button:hover {
-    background: #54d2ff;
-    box-shadow: 0 0 15px #54d2ff;
-    color: #001f33;
+    .logo {
+        width: 35px;
+        height: 35px;
+    }
 }
