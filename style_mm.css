@@ -1,0 +1,1342 @@
+/* ================================
+   RESET ET BASE
+   ================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Arial Black', 'Impact', sans-serif;
+    background: #0a0a0a;
+    color: #ffb700;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+body {
+    position: relative;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+}
+
+/* ================================
+   OVERLAY D'INTRO - FORGE
+   ================================ */
+.intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, #2d2d2d 0%, #0a0a0a 100%);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeOut 1s ease 3s forwards;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+
+.intro-content {
+    text-align: center;
+    position: relative;
+}
+
+/* Effet métal chauffé sur le titre */
+.forge-wrapper {
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.metal-text {
+    font-size: 10rem;
+    font-weight: 900;
+    color: #ffb700;
+    position: relative;
+    text-shadow: 
+        0 0 20px rgba(255, 183, 0, 0.8),
+        0 0 40px rgba(255, 140, 0, 0.6),
+        0 0 60px rgba(255, 69, 0, 0.4),
+        2px 2px 8px rgba(0, 0, 0, 0.9);
+    animation: metal-heat 2s ease-in-out infinite;
+}
+
+@keyframes metal-heat {
+    0%, 100% {
+        color: #ffb700;
+        text-shadow: 
+            0 0 20px rgba(255, 183, 0, 0.8),
+            0 0 40px rgba(255, 140, 0, 0.6),
+            0 0 60px rgba(255, 69, 0, 0.4),
+            2px 2px 8px rgba(0, 0, 0, 0.9);
+    }
+    50% {
+        color: #ff8c00;
+        text-shadow: 
+            0 0 30px rgba(255, 140, 0, 1),
+            0 0 60px rgba(255, 69, 0, 0.8),
+            0 0 90px rgba(255, 0, 0, 0.6),
+            2px 2px 10px rgba(0, 0, 0, 0.9);
+    }
+}
+
+/* Étincelles d'intro */
+.sparks-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* Barre de chargement - métal en fusion */
+.loading-bar {
+    width: 400px;
+    height: 8px;
+    background: rgba(50, 50, 50, 0.8);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 0 auto 20px;
+    border: 2px solid rgba(255, 183, 0, 0.3);
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.8);
+}
+
+.loading-progress {
+    height: 100%;
+    background: linear-gradient(90deg, #ff8c00, #ffb700, #ffd700);
+    width: 0;
+    animation: loading 2.5s ease-in-out forwards;
+    position: relative;
+    box-shadow: 
+        0 0 10px rgba(255, 183, 0, 0.8),
+        0 0 20px rgba(255, 140, 0, 0.6);
+}
+
+.molten-metal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.6) 50%, 
+        transparent 100%);
+    animation: molten-flow 1s linear infinite;
+}
+
+@keyframes loading {
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes molten-flow {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.loading-text {
+    font-size: 1rem;
+    color: #ffb700;
+    animation: pulse-glow 1.5s ease-in-out infinite;
+    text-shadow: 0 0 10px rgba(255, 183, 0, 0.6);
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        opacity: 0.6;
+        text-shadow: 0 0 10px rgba(255, 183, 0, 0.4);
+    }
+    50% {
+        opacity: 1;
+        text-shadow: 0 0 20px rgba(255, 183, 0, 0.8);
+    }
+}
+
+/* ================================
+   FOND INDUSTRIEL
+   ================================ */
+.industrial-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.2;
+}
+
+#ore-canvas {
+    width: 100%;
+    height: 100%;
+}
+
+/* ================================
+   PARTICULES D'ÉTINCELLES
+   ================================ */
+.spark-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ================================
+   OVERLAY DE CHALEUR
+   ================================ */
+.heat-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 80%, 
+        rgba(255, 140, 0, 0.1) 0%, 
+        transparent 60%);
+    z-index: 1;
+    pointer-events: none;
+    animation: heat-pulse 3s ease-in-out infinite;
+}
+
+@keyframes heat-pulse {
+    0%, 100% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
+
+/* ================================
+   NOTIFICATION
+   ================================ */
+.notification {
+    display: none;
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #ffb700 0%, #ff8c00 100%);
+    color: #0a0a0a;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-weight: bold;
+    z-index: 1000;
+    box-shadow: 
+        0 0 20px rgba(255, 183, 0, 0.6),
+        0 10px 30px rgba(0, 0, 0, 0.5),
+        inset 0 2px 5px rgba(255, 255, 255, 0.3);
+    animation: slideInDown 0.5s ease, slideOutUp 0.5s ease 3s forwards;
+    border: 2px solid rgba(255, 215, 0, 0.8);
+}
+
+@keyframes slideInDown {
+    from {
+        transform: translate(-50%, -100px);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutUp {
+    to {
+        transform: translate(-50%, -100px);
+        opacity: 0;
+    }
+}
+
+.notif-icon {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+/* ================================
+   CONTENU PRINCIPAL
+   ================================ */
+.main-content {
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    animation: fadeInContent 1s ease 3.2s backwards;
+}
+
+@keyframes fadeInContent {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================================
+   HEADER
+   ================================ */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.logo-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 30px;
+}
+
+.logo {
+    width: 120px;
+    height: auto;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 0 20px rgba(255, 183, 0, 0.6));
+    animation: anvil-bounce 2s ease-in-out infinite;
+}
+
+@keyframes anvil-bounce {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    10% {
+        transform: translateY(-10px) scale(1.05);
+    }
+    20% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+.logo-forge-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 180px;
+    height: 180px;
+    background: radial-gradient(circle, rgba(255, 183, 0, 0.4) 0%, transparent 70%);
+    animation: forge-pulse 2s ease-in-out infinite;
+    z-index: 1;
+}
+
+@keyframes forge-pulse {
+    0%, 100% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.3);
+    }
+}
+
+.anvil-strike {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+    opacity: 0;
+    animation: strike-flash 2s ease-in-out infinite;
+}
+
+@keyframes strike-flash {
+    0%, 90%, 100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+    10% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(2);
+    }
+}
+
+/* Titre principal avec effet métal */
+.title-main {
+    font-size: 4rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.title-letter {
+    display: inline-block;
+    color: #ffb700;
+    text-shadow: 
+        0 0 10px rgba(255, 183, 0, 0.8),
+        0 0 20px rgba(255, 140, 0, 0.6),
+        2px 2px 6px rgba(0, 0, 0, 0.9),
+        inset 0 2px 5px rgba(255, 255, 255, 0.3);
+    animation: metal-shine 3s ease-in-out infinite;
+    position: relative;
+}
+
+.title-letter::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(180deg, 
+        rgba(255, 255, 255, 0.4) 0%, 
+        transparent 50%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.title-letter:nth-child(odd) {
+    animation-delay: 0.2s;
+}
+
+.title-letter:nth-child(even) {
+    animation-delay: 0.4s;
+}
+
+.separator {
+    color: #ff8c00;
+    margin: 0 10px;
+}
+
+@keyframes metal-shine {
+    0%, 100% {
+        filter: brightness(1);
+    }
+    50% {
+        filter: brightness(1.3);
+    }
+}
+
+/* Ligne industrielle */
+.industrial-line {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #ffb700;
+    font-family: 'Courier New', monospace;
+}
+
+.gear-icon {
+    color: #ffd700;
+    margin-right: 10px;
+    display: inline-block;
+    animation: rotate-gear 4s linear infinite;
+}
+
+@keyframes rotate-gear {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.typed-text {
+    color: #ffb700;
+}
+
+.cursor-metal {
+    color: #ffb700;
+    animation: blink-metal 1s step-end infinite;
+}
+
+@keyframes blink-metal {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 183, 0, 0.7);
+    font-weight: 400;
+}
+
+/* ================================
+   JAUGE DE TEMPÉRATURE
+   ================================ */
+.temperature-gauge {
+    width: 90%;
+    max-width: 600px;
+    margin-bottom: 40px;
+}
+
+.gauge-container {
+    background: rgba(0, 0, 0, 0.6);
+    border: 3px solid rgba(255, 183, 0, 0.4);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 
+        inset 0 2px 10px rgba(0, 0, 0, 0.8),
+        0 0 20px rgba(255, 183, 0, 0.3);
+}
+
+.gauge-label {
+    color: #ffb700;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    text-shadow: 0 0 10px rgba(255, 183, 0, 0.6);
+}
+
+.gauge-bar {
+    position: relative;
+    height: 30px;
+    background: rgba(50, 50, 50, 0.8);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 2px solid rgba(255, 183, 0, 0.3);
+}
+
+.gauge-fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, 
+        #ff4500 0%, 
+        #ff8c00 50%, 
+        #ffd700 100%);
+    border-radius: 15px;
+    transition: width 0.5s ease;
+    box-shadow: 
+        0 0 20px rgba(255, 140, 0, 0.8),
+        inset 0 2px 5px rgba(255, 255, 255, 0.3);
+    animation: heat-shimmer 2s ease-in-out infinite;
+}
+
+@keyframes heat-shimmer {
+    0%, 100% {
+        box-shadow: 
+            0 0 20px rgba(255, 140, 0, 0.8),
+            inset 0 2px 5px rgba(255, 255, 255, 0.3);
+    }
+    50% {
+        box-shadow: 
+            0 0 30px rgba(255, 140, 0, 1),
+            inset 0 2px 5px rgba(255, 255, 255, 0.5);
+    }
+}
+
+.gauge-value {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    color: white;
+    font-weight: bold;
+    text-shadow: 
+        0 0 10px rgba(0, 0, 0, 0.8),
+        0 0 5px rgba(255, 183, 0, 0.6);
+}
+
+/* ================================
+   BARRE DE STATISTIQUES
+   ================================ */
+.stats-bar {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.6);
+    border: 3px solid rgba(255, 183, 0, 0.4);
+    border-radius: 15px;
+    padding: 25px 35px;
+    min-width: 160px;
+    transition: all 0.3s ease;
+    box-shadow: 
+        inset 0 2px 10px rgba(0, 0, 0, 0.8),
+        0 5px 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 183, 0, 0.3) 50%, 
+        transparent 100%);
+    transition: left 0.5s ease;
+}
+
+.stat-item:hover::before {
+    left: 100%;
+}
+
+.stat-item:hover {
+    background: rgba(255, 183, 0, 0.1);
+    border-color: rgba(255, 183, 0, 0.8);
+    transform: translateY(-8px);
+    box-shadow: 
+        inset 0 2px 10px rgba(0, 0, 0, 0.8),
+        0 10px 30px rgba(255, 183, 0, 0.4);
+}
+
+.stat-icon-container {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+}
+
+.stat-pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, rgba(255, 183, 0, 0.4) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: pulse-ring 2s ease-in-out infinite;
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0;
+    }
+}
+
+.stat-value {
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: #ffb700;
+    text-shadow: 
+        0 0 10px rgba(255, 183, 0, 0.8),
+        2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.stat-label {
+    font-size: 0.95rem;
+    color: rgba(255, 183, 0, 0.8);
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+/* ================================
+   BOUTONS
+   ================================ */
+.btn-container {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn {
+    position: relative;
+    text-decoration: none;
+    padding: 20px 45px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    border: 3px solid transparent;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #ffb700 0%, #ff8c00 100%);
+    color: #0a0a0a;
+    box-shadow: 
+        0 5px 20px rgba(255, 183, 0, 0.5),
+        inset 0 2px 5px rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 215, 0, 0.5);
+}
+
+.btn-primary:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 10px 35px rgba(255, 183, 0, 0.7),
+        inset 0 2px 5px rgba(255, 255, 255, 0.5);
+    border-color: #ffd700;
+}
+
+.btn-secondary {
+    background: rgba(255, 183, 0, 0.1);
+    color: #ffb700;
+    border: 3px solid rgba(255, 183, 0, 0.5);
+    box-shadow: 
+        inset 0 2px 5px rgba(0, 0, 0, 0.5),
+        0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 183, 0, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 
+        inset 0 2px 5px rgba(0, 0, 0, 0.5),
+        0 10px 30px rgba(255, 183, 0, 0.4);
+    border-color: #ffb700;
+}
+
+.btn-icon {
+    font-size: 1.4rem;
+}
+
+.btn-text {
+    position: relative;
+    z-index: 2;
+}
+
+.btn-metal-shine {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.5) 50%,
+        transparent 70%
+    );
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    transition: transform 0.8s ease;
+}
+
+.btn:hover .btn-metal-shine {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+}
+
+.btn-sparks {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.btn:hover .btn-sparks {
+    opacity: 1;
+    animation: spark-burst 0.6s ease-out;
+}
+
+@keyframes spark-burst {
+    0% {
+        box-shadow: 
+            0 0 0 0 rgba(255, 183, 0, 1),
+            0 0 0 0 rgba(255, 183, 0, 1),
+            0 0 0 0 rgba(255, 183, 0, 1),
+            0 0 0 0 rgba(255, 183, 0, 1);
+    }
+    100% {
+        box-shadow: 
+            20px 0 10px -5px transparent,
+            -20px 0 10px -5px transparent,
+            0 20px 10px -5px transparent,
+            0 -20px 10px -5px transparent;
+    }
+}
+
+/* ================================
+   PANNEAU DE CONTRÔLE INDUSTRIEL
+   ================================ */
+.control-panel {
+    background: rgba(0, 0, 0, 0.8);
+    border: 3px solid rgba(255, 183, 0, 0.4);
+    border-radius: 15px;
+    width: 90%;
+    max-width: 900px;
+    overflow: hidden;
+    box-shadow: 
+        0 10px 40px rgba(0, 0, 0, 0.7),
+        inset 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.panel-header {
+    background: linear-gradient(135deg, rgba(255, 183, 0, 0.2) 0%, rgba(255, 140, 0, 0.1) 100%);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid rgba(255, 183, 0, 0.3);
+}
+
+.panel-lights {
+    display: flex;
+    gap: 10px;
+}
+
+.light {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.light-active {
+    background: #27c93f;
+    box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.6),
+        0 0 10px rgba(39, 201, 63, 0.8);
+    animation: blink-active 2s ease-in-out infinite;
+}
+
+@keyframes blink-active {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.light-warning {
+    background: #ffbd2e;
+    box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.6),
+        0 0 10px rgba(255, 189, 46, 0.6);
+}
+
+.light-danger {
+    background: rgba(255, 95, 86, 0.3);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.panel-title {
+    color: #ffb700;
+    font-weight: bold;
+    font-size: 1rem;
+    text-shadow: 0 0 10px rgba(255, 183, 0, 0.6);
+}
+
+.panel-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #27c93f;
+    box-shadow: 0 0 10px rgba(39, 201, 63, 0.8);
+    animation: pulse-status 2s ease-in-out infinite;
+}
+
+@keyframes pulse-status {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.3);
+    }
+}
+
+.status-text {
+    color: #27c93f;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.panel-content {
+    padding: 20px;
+    font-size: 0.95rem;
+    color: #ffb700;
+    max-height: 200px;
+    overflow-y: auto;
+    font-family: 'Courier New', monospace;
+}
+
+.panel-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.panel-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.panel-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 183, 0, 0.5);
+    border-radius: 4px;
+}
+
+.log-entry {
+    margin: 8px 0;
+    display: flex;
+    gap: 10px;
+    animation: log-appear 0.3s ease;
+}
+
+@keyframes log-appear {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.log-icon {
+    color: #ffd700;
+}
+
+.log-time {
+    color: rgba(255, 183, 0, 0.6);
+}
+
+.log-msg {
+    color: #ffb700;
+}
+
+.log-success {
+    color: #27c93f;
+}
+
+.log-warning {
+    color: #ffbd2e;
+}
+
+.log-timer {
+    color: #00ffff;
+}
+
+.log-pause {
+    color: #ff8c00;
+}
+
+.panel-footer {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    border-top: 2px solid rgba(255, 183, 0, 0.3);
+}
+
+.mini-gauge {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.mini-label {
+    font-size: 0.75rem;
+    color: rgba(255, 183, 0, 0.8);
+    font-weight: bold;
+}
+
+.mini-bar {
+    height: 8px;
+    background: rgba(50, 50, 50, 0.8);
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 183, 0, 0.3);
+}
+
+.mini-fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #ff8c00, #ffb700);
+    border-radius: 4px;
+    transition: width 0.5s ease;
+    box-shadow: 0 0 10px rgba(255, 183, 0, 0.6);
+}
+
+/* ================================
+   INDICATEUR DE PRODUCTION
+   ================================ */
+.production-indicator {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid rgba(255, 183, 0, 0.4);
+    border-radius: 30px;
+    padding: 12px 25px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 100;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+.prod-icon {
+    font-size: 1.5rem;
+    animation: factory-work 2s ease-in-out infinite;
+}
+
+@keyframes factory-work {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+.prod-text {
+    color: #ffb700;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 183, 0, 0.6);
+}
+
+.prod-dots {
+    display: flex;
+    gap: 5px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ffb700;
+    box-shadow: 0 0 10px rgba(255, 183, 0, 0.6);
+    animation: dot-pulse 1.5s ease-in-out infinite;
+}
+
+.dot:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.dot:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+@keyframes dot-pulse {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* ================================
+   ÉTINCELLES AU CLIC
+   ================================ */
+.click-sparks {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9998;
+}
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+@media (max-width: 1024px) {
+    .metal-text {
+        font-size: 7rem;
+    }
+    
+    .title-main {
+        font-size: 3rem;
+    }
+    
+    .industrial-line {
+        font-size: 1.1rem;
+    }
+    
+    .logo {
+        width: 100px;
+    }
+    
+    .loading-bar {
+        width: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .metal-text {
+        font-size: 5rem;
+    }
+    
+    .title-main {
+        font-size: 2.5rem;
+        gap: 5px;
+    }
+    
+    .industrial-line {
+        font-size: 1rem;
+    }
+    
+    .subtitle {
+        font-size: 0.95rem;
+    }
+    
+    .temperature-gauge {
+        width: 95%;
+    }
+    
+    .gauge-container {
+        padding: 15px;
+    }
+    
+    .gauge-label {
+        font-size: 0.95rem;
+    }
+    
+    .gauge-bar {
+        height: 25px;
+    }
+    
+    .stats-bar {
+        gap: 20px;
+    }
+    
+    .stat-item {
+        min-width: 140px;
+        padding: 20px 25px;
+    }
+    
+    .stat-icon {
+        font-size: 2rem;
+    }
+    
+    .stat-value {
+        font-size: 2.3rem;
+    }
+    
+    .btn-container {
+        flex-direction: column;
+        width: 90%;
+    }
+    
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .control-panel {
+        width: 95%;
+    }
+    
+    .panel-header {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+    
+    .panel-footer {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .production-indicator {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+    }
+    
+    .prod-icon {
+        font-size: 1.2rem;
+    }
+    
+    .loading-bar {
+        width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .metal-text {
+        font-size: 3.5rem;
+    }
+    
+    .title-main {
+        font-size: 2rem;
+        gap: 3px;
+    }
+    
+    .logo {
+        width: 80px;
+    }
+    
+    .industrial-line {
+        font-size: 0.9rem;
+    }
+    
+    .subtitle {
+        font-size: 0.85rem;
+    }
+    
+    .gauge-container {
+        padding: 12px;
+    }
+    
+    .gauge-label {
+        font-size: 0.85rem;
+    }
+    
+    .gauge-bar {
+        height: 20px;
+    }
+    
+    .gauge-value {
+        font-size: 0.85rem;
+        right: 10px;
+    }
+    
+    .stats-bar {
+        gap: 15px;
+    }
+    
+    .stat-item {
+        min-width: 120px;
+        padding: 15px 20px;
+    }
+    
+    .stat-icon {
+        font-size: 1.8rem;
+    }
+    
+    .stat-value {
+        font-size: 2rem;
+    }
+    
+    .stat-label {
+        font-size: 0.8rem;
+    }
+    
+    .btn {
+        padding: 15px 30px;
+        font-size: 1rem;
+    }
+    
+    .panel-content {
+        font-size: 0.85rem;
+        max-height: 150px;
+    }
+    
+    .panel-title {
+        font-size: 0.85rem;
+    }
+    
+    .mini-label {
+        font-size: 0.7rem;
+    }
+    
+    .production-indicator {
+        padding: 8px 15px;
+        bottom: 20px;
+    }
+    
+    .prod-text {
+        font-size: 0.75rem;
+    }
+    
+    .prod-icon {
+        font-size: 1rem;
+    }
+    
+    .dot {
+        width: 6px;
+        height: 6px;
+    }
+    
+    .loading-bar {
+        width: 250px;
+    }
+    
+    .loading-text {
+        font-size: 0.85rem;
+    }
+}
+
+/* ================================
+   ANIMATIONS PERSONNALISÉES
+   ================================ */
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+@keyframes glow-intense {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(255, 183, 0, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(255, 183, 0, 1);
+    }
+}
+
+/* Effet de texture métallique */
+.metal-texture {
+    background: 
+        linear-gradient(135deg, 
+            rgba(255, 255, 255, 0.1) 0%, 
+            transparent 50%, 
+            rgba(0, 0, 0, 0.2) 100%);
+}
+
+/* Effet de rouille subtil */
+.rust-effect {
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(139, 69, 19, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(160, 82, 45, 0.1) 0%, transparent 50%);
+}

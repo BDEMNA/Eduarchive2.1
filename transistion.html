@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choisissez Votre Majeure</title>
+    <link rel="stylesheet" href="style_tran2.css">
+</head>
+<body>
+    <div class="overlay" id="overlay"></div>
+    
+    <div class="container">
+        <!-- Colonne GIM -->
+        <a href="index_gim.html" class="column column-gim" data-target="index_gim.html">
+            <div class="column-content">
+                <div class="icon">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="30" r="8" fill="currentColor"/>
+                        <rect x="35" y="42" width="30" height="35" rx="3" fill="currentColor"/>
+                        <rect x="20" y="50" width="10" height="20" rx="2" fill="currentColor"/>
+                        <rect x="70" y="50" width="10" height="20" rx="2" fill="currentColor"/>
+                        <circle cx="50" cy="55" r="6" fill="white"/>
+                        <rect x="42" y="65" width="16" height="3" fill="white"/>
+                    </svg>
+                </div>
+                <h1 class="title">GIM</h1>
+                <p class="subtitle">Génie Informatique<br>et Maintenance</p>
+                <div class="particles">
+                    <span class="particle"></span>
+                    <span class="particle"></span>
+                    <span class="particle"></span>
+                    <span class="particle"></span>
+                    <span class="particle"></span>
+                </div>
+            </div>
+        </a>
+
+        <!-- Colonne TC -->
+        <a href="index_tc.html" class="column column-tc" data-target="index_tc.html">
+            <div class="column-content">
+                <div class="icon">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="20" y="30" width="25" height="40" rx="2" fill="currentColor"/>
+                        <rect x="55" y="30" width="25" height="40" rx="2" fill="currentColor"/>
+                        <circle cx="32.5" cy="45" r="5" fill="white"/>
+                        <circle cx="67.5" cy="45" r="5" fill="white"/>
+                        <rect x="25" y="55" width="15" height="3" fill="white"/>
+                        <rect x="60" y="55" width="15" height="3" fill="white"/>
+                    </svg>
+                </div>
+                <h1 class="title">TC</h1>
+                <p class="subtitle">Tronc Commun</p>
+                <div class="particles">
+                    <span class="particle"></span>
+                    <span class="particle"></span>
+                    <span class="particle"></span>
+                    <span class="particle"></span>
+                    <span class="particle"></span>
+                </div>
+            </div>
+        </a>
+
+        <!-- Colonne Mine et Métallurgie -->
+        <a href="index_mm.html" class="column column-mm" data-target="index_mm.html">
+            <div class="column-content">
+                <div class="icon">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="50,20 70,40 70,70 30,70 30,40" fill="currentColor"/>
+                        <rect x="40" y="50" width="20" height="20" fill="white"/>
+                        <circle cx="35" cy="35" r="4" fill="white"/>
+                        <circle cx="65" cy="35" r="4" fill="white"/>
+                        <path d="M 30 70 L 20 85 L 80 85 L 70 70 Z" fill="currentColor" opacity="0.7"/>
+                    </svg>
+                </div>
+                <h1 class="title">MM</h1>
+                <p class="subtitle">Mine et<br>Métallurgie</p>
+                <div class="particles">
+                    <span class="particle"></span>
+                    <span class="particle"></span>
+                    <span class="particle"></span>
+                    <span class="particle"></span>
+                    <span class="particle"></span>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="instruction">
+        <p>Choisissez votre majeure pour commencer votre aventure</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const columns = document.querySelectorAll('.column');
+            const overlay = document.getElementById('overlay');
+            
+            columns.forEach(column => {
+                column.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = this.getAttribute('data-target');
+                    
+                    // Ajouter la classe de sélection
+                    this.classList.add('selected');
+                    
+                    // Activer l'overlay
+                    overlay.classList.add('active');
+                    
+                    // Masquer les autres colonnes
+                    columns.forEach(col => {
+                        if (col !== this) {
+                            col.classList.add('fade-out');
+                        }
+                    });
+                    
+                    // Redirection après l'animation
+                    setTimeout(() => {
+                        window.location.href = target;
+                    }, 1200);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

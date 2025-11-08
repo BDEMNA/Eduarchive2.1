@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIM - Génie Informatique et Maintenance</title>
+    <link rel="stylesheet" href="style_indexgim.css">
+</head>
+<body>
+    <!-- Overlay d'intro avec effet de transition -->
+    <div id="intro-overlay" class="intro-overlay">
+        <div class="intro-content">
+            <div class="glitch-wrapper">
+                <div class="glitch" data-text="GIM">GIM</div>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+            <p class="loading-text">Initialisation du système...</p>
+        </div>
+    </div>
+
+    <!-- Grille matricielle de fond -->
+    <div class="matrix-bg">
+        <canvas id="matrix-canvas"></canvas>
+    </div>
+
+    <!-- Particules flottantes de code -->
+    <div class="code-particles" id="code-particles"></div>
+
+    <!-- Notification visuelle -->
+    <div id="notif" class="notification">
+        <span class="notif-icon">🚀</span>
+        <span class="notif-text">Bienvenue dans l'univers GIM</span>
+    </div>
+
+    <!-- Contenu principal -->
+    <div class="main-content">
+        <header class="header">
+            <div class="logo-container">
+                <img src="logo_eil.jpg" alt="Logo EIL" class="logo">
+                <div class="logo-glow"></div>
+            </div>
+            
+            <div class="header-text">
+                <h1 class="title-main">
+                    <span class="title-letter">G</span>
+                    <span class="title-letter">I</span>
+                    <span class="title-letter">M</span>
+                </h1>
+                <div class="terminal-line">
+                    <span class="prompt">$</span>
+                    <span class="typed-text" id="typed-text"></span>
+                    <span class="cursor">|</span>
+                </div>
+                <p class="subtitle">École d'Ingénierie de Libreville (EIL)</p>
+            </div>
+        </header>
+
+        <div class="stats-bar">
+            <div class="stat-item">
+                <span class="stat-icon">👥</span>
+                <span class="stat-value" data-target="247">0</span>
+                <span class="stat-label">Étudiants</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-icon">📚</span>
+                <span class="stat-value" data-target="12">0</span>
+                <span class="stat-label">Modules</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-icon">💻</span>
+                <span class="stat-value" data-target="8">0</span>
+                <span class="stat-label">Labs</span>
+            </div>
+        </div>
+
+        <div class="btn-container">
+            <a href="modules.html" class="btn btn-primary">
+                <span class="btn-icon">📚</span>
+                <span class="btn-text">Accéder aux modules</span>
+                <span class="btn-hover-effect"></span>
+            </a>
+            <a href="indisponible.html" class="btn btn-secondary">
+                <span class="btn-icon">📝</span>
+                <span class="btn-text">Voir les devoirs</span>
+                <span class="btn-hover-effect"></span>
+            </a>
+        </div>
+
+        <!-- Terminal interactif en bas -->
+        <div class="terminal-footer">
+            <div class="terminal-header">
+                <span class="terminal-title">● system.log</span>
+                <div class="terminal-controls">
+                    <span class="terminal-dot"></span>
+                    <span class="terminal-dot"></span>
+                    <span class="terminal-dot"></span>
+                </div>
+            </div>
+            <div class="terminal-content" id="terminal-content">
+                <p><span class="terminal-time">[00:00:00]</span> <span class="terminal-success">✓</span> Connexion établie</p>
+                <p><span class="terminal-time">[00:00:11]</span> <span class="terminal-success">✓</span> Modules chargés</p>
+                <p><span class="terminal-time">[00:00:24]</span> <span class="terminal-info">→</span> Mise à jour de l'horaires locale...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Indicateur de scroll (si nécessaire) -->
+    <div class="scroll-indicator">
+        <span>↓</span>
+    </div>
+
+    <script src="scriptgim.js"></script>
+</body>
+</html>

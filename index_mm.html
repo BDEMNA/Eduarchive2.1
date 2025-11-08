@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MM - Mine et Métallurgie</title>
+    <link rel="stylesheet" href="style_mm.css">
+</head>
+<body>
+    <!-- Overlay d'intro avec effet industriel -->
+    <div id="intro-overlay" class="intro-overlay">
+        <div class="intro-content">
+            <div class="forge-wrapper">
+                <div class="metal-text" data-text="MM">MM</div>
+                <div class="sparks-container" id="intro-sparks"></div>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress">
+                    <div class="molten-metal"></div>
+                </div>
+            </div>
+            <p class="loading-text">Chauffage du four... Préparation des équipements...</p>
+        </div>
+    </div>
+
+    <!-- Fond avec texture métallique animée -->
+    <div class="industrial-bg">
+        <canvas id="ore-canvas"></canvas>
+    </div>
+
+    <!-- Particules d'étincelles -->
+    <div class="spark-particles" id="spark-particles"></div>
+
+    <!-- Overlay de chaleur -->
+    <div class="heat-overlay"></div>
+
+    <!-- Notification visuelle -->
+    <div id="notif" class="notification">
+        <span class="notif-icon">⚒️</span>
+        <span class="notif-text">Bienvenue dans la forge industrielle</span>
+    </div>
+
+    <!-- Contenu principal -->
+    <div class="main-content">
+        <header class="header">
+            <div class="logo-container">
+                <img src="logo_eil.png" alt="Logo EIL" class="logo">
+                <div class="logo-forge-glow"></div>
+                <div class="anvil-strike"></div>
+            </div>
+            
+            <div class="header-text">
+                <h1 class="title-main">
+                    <span class="title-letter metal-effect">M</span>
+                    <span class="title-letter metal-effect">I</span>
+                    <span class="title-letter metal-effect">N</span>
+                    <span class="title-letter metal-effect">E</span>
+                    <span class="separator">&</span>
+                    <span class="title-letter metal-effect">M</span>
+                    <span class="title-letter metal-effect">É</span>
+                    <span class="title-letter metal-effect">T</span>
+                    <span class="title-letter metal-effect">A</span>
+                    <span class="title-letter metal-effect">L</span>
+                </h1>
+                <div class="industrial-line">
+                    <span class="gear-icon">⚙</span>
+                    <span class="typed-text" id="typed-text"></span>
+                    <span class="cursor-metal">▌</span>
+                </div>
+                <p class="subtitle">École d'Ingénierie de Libreville (EIL)</p>
+            </div>
+        </header>
+
+        <!-- Jauge de température/production -->
+        <div class="temperature-gauge">
+            <div class="gauge-container">
+                <div class="gauge-label">🔥 TEMPÉRATURE</div>
+                <div class="gauge-bar">
+                    <div class="gauge-fill" id="temp-gauge"></div>
+                    <span class="gauge-value" id="temp-value">0°C</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-bar">
+            <div class="stat-item stat-mining">
+                <div class="stat-icon-container">
+                    <span class="stat-icon">⛏️</span>
+                    <div class="stat-pulse"></div>
+                </div>
+                <span class="stat-value" data-target="156">0</span>
+                <span class="stat-label">Étudiants</span>
+            </div>
+            <div class="stat-item stat-forge">
+                <div class="stat-icon-container">
+                    <span class="stat-icon">⚒️</span>
+                    <div class="stat-pulse"></div>
+                </div>
+                <span class="stat-value" data-target="10">0</span>
+                <span class="stat-label">Modules</span>
+            </div>
+            <div class="stat-item stat-metal">
+                <div class="stat-icon-container">
+                    <span class="stat-icon">🏭</span>
+                    <div class="stat-pulse"></div>
+                </div>
+                <span class="stat-value" data-target="6">0</span>
+                <span class="stat-label">Laboratoires</span>
+            </div>
+        </div>
+
+        <div class="btn-container">
+            <a href="modules.html" class="btn btn-primary">
+                <span class="btn-icon">📚</span>
+                <span class="btn-text">Accéder aux modules</span>
+                <div class="btn-metal-shine"></div>
+                <div class="btn-sparks"></div>
+            </a>
+            <a href="indisponible.html" class="btn btn-secondary">
+                <span class="btn-icon">📝</span>
+                <span class="btn-text">Voir les devoirs</span>
+                <div class="btn-metal-shine"></div>
+                <div class="btn-sparks"></div>
+            </a>
+        </div>
+
+        <!-- Panneau de contrôle industriel -->
+        <div class="control-panel">
+            <div class="panel-header">
+                <div class="panel-lights">
+                    <span class="light light-active"></span>
+                    <span class="light light-warning"></span>
+                    <span class="light light-danger"></span>
+                </div>
+                <span class="panel-title">⚙ PANNEAU DE CONTRÔLE</span>
+                <div class="panel-status">
+                    <span class="status-indicator"></span>
+                    <span class="status-text">OPÉRATIONNEL</span>
+                </div>
+            </div>
+            <div class="panel-content" id="panel-content">
+                <div class="log-entry">
+                    <span class="log-icon">⚡</span>
+                    <span class="log-time">[--:--:--]</span>
+                    <span class="log-msg">Initialisation du système...</span>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <div class="mini-gauge">
+                    <span class="mini-label">PRESSION</span>
+                    <div class="mini-bar"><div class="mini-fill" id="pressure-gauge"></div></div>
+                </div>
+                <div class="mini-gauge">
+                    <span class="mini-label">ÉNERGIE</span>
+                    <div class="mini-bar"><div class="mini-fill" id="energy-gauge"></div></div>
+                </div>
+                <div class="mini-gauge">
+                    <span class="mini-label">RENDEMENT</span>
+                    <div class="mini-bar"><div class="mini-fill" id="yield-gauge"></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Indicateur de production -->
+    <div class="production-indicator">
+        <span class="prod-icon">🏭</span>
+        <span class="prod-text">PRODUCTION EN COURS</span>
+        <div class="prod-dots">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
+
+    <!-- Overlay d'étincelles lors du clic -->
+    <div class="click-sparks" id="click-sparks"></div>
+
+    <script src="script_mm.js"></script>
+</body>
+</html>
