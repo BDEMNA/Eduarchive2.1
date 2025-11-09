@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pratique Agricole - Devoirs et Examens</title>
+    <link rel="stylesheet" href="style_prat_agr.css">
+</head>
+<body>
+    <!-- Particules de fond -->
+    <div class="background-particles" id="bg-particles"></div>
+
+    <!-- Header avec informations du module -->
+    <header class="module-header">
+        <div class="header-decoration">
+            <span class="deco-icon">🌾</span>
+            <div class="header-content">
+                <h1 class="module-title">Pratique Agricole</h1>
+                <p class="module-description">Examens et Devoirs</p>
+            </div>
+            <span class="deco-icon">🌾</span>
+        </div>
+        <div class="module-info">
+            <div class="info-item">
+                <span class="info-icon">📅</span>
+                <span class="info-text">Année Académique 2025-2026</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">📚</span>
+                <span class="info-text">3 Épreuves disponibles</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section principale des épreuves -->
+    <main class="exams-container">
+        <!-- Carte Intra -->
+        <div class="exam-card exam-intra">
+            <div class="exam-icon-container">
+                <div class="exam-icon-glow"></div>
+                <span class="exam-icon">📝</span>
+            </div>
+            <div class="exam-content">
+                <h2 class="exam-title">Examen Intra</h2>
+                <p class="exam-description">
+                    Évaluation à mi-parcours sur les techniques de base en pratique agricole
+                </p>
+                <div class="exam-details">
+                    <div class="detail-item">
+                        <span class="detail-icon">⏱️</span>
+                        <span class="detail-text">Durée: 2h</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon">📄</span>
+                        <span class="detail-text">Format: PDF</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon">🎯</span>
+                        <span class="detail-text">Coefficient: 1</span>
+                    </div>
+                </div>
+            </div>
+            <button class="exam-btn" data-pdf="pdf/pratique_agricole_intra.pdf">
+                <span class="btn-icon">📖</span>
+                <span class="btn-text">Ouvrir le PDF</span>
+                <span class="btn-arrow">→</span>
+            </button>
+            <div class="card-leaves">
+                <span class="leaf leaf-1">🍃</span>
+                <span class="leaf leaf-2">🌿</span>
+            </div>
+        </div>
+
+        <!-- Carte Final -->
+        <div class="exam-card exam-final">
+            <div class="exam-icon-container">
+                <div class="exam-icon-glow"></div>
+                <span class="exam-icon">📋</span>
+            </div>
+            <div class="exam-content">
+                <h2 class="exam-title">Examen Final</h2>
+                <p class="exam-description">
+                    Évaluation complète couvrant l'ensemble du programme de pratique agricole
+                </p>
+                <div class="exam-details">
+                    <div class="detail-item">
+                        <span class="detail-icon">⏱️</span>
+                        <span class="detail-text">Durée: 3h</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon">📄</span>
+                        <span class="detail-text">Format: PDF</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon">🎯</span>
+                        <span class="detail-text">Coefficient: 2</span>
+                    </div>
+                </div>
+            </div>
+            <button class="exam-btn" data-pdf="pdf/pratique_agricole_final.pdf">
+                <span class="btn-icon">📖</span>
+                <span class="btn-text">Ouvrir le PDF</span>
+                <span class="btn-arrow">→</span>
+            </button>
+            <div class="card-leaves">
+                <span class="leaf leaf-1">🍃</span>
+                <span class="leaf leaf-2">🌿</span>
+            </div>
+        </div>
+
+        <!-- Carte Rattrapage -->
+        <div class="exam-card exam-rattrapage">
+            <div class="exam-icon-container">
+                <div class="exam-icon-glow"></div>
+                <span class="exam-icon">🔄</span>
+            </div>
+            <div class="exam-content">
+                <h2 class="exam-title">Examen de Rattrapage</h2>
+                <p class="exam-description">
+                    Session de rattrapage pour améliorer votre note en pratique agricole
+                </p>
+                <div class="exam-details">
+                    <div class="detail-item">
+                        <span class="detail-icon">⏱️</span>
+                        <span class="detail-text">Durée: 2h30</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon">📄</span>
+                        <span class="detail-text">Format: PDF</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon">🎯</span>
+                        <span class="detail-text">Coefficient: 1.5</span>
+                    </div>
+                </div>
+            </div>
+            <button class="exam-btn" data-pdf="pdf/pratique_agricole_rattrapage.pdf">
+                <span class="btn-icon">📖</span>
+                <span class="btn-text">Ouvrir le PDF</span>
+                <span class="btn-arrow">→</span>
+            </button>
+            <div class="card-leaves">
+                <span class="leaf leaf-1">🍃</span>
+                <span class="leaf leaf-2">🌿</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- Visionneuse PDF (Modal) -->
+    <div class="pdf-viewer-overlay" id="pdf-overlay">
+        <div class="pdf-viewer-container">
+            <div class="pdf-viewer-header">
+                <h3 class="pdf-title" id="pdf-title">Document PDF</h3>
+                <div class="pdf-controls">
+                    <button class="control-btn" id="download-btn" title="Télécharger">
+                        <span>📥</span>
+                    </button>
+                    <button class="control-btn" id="fullscreen-btn" title="Plein écran">
+                        <span>⛶</span>
+                    </button>
+                    <button class="control-btn close-btn" id="close-pdf">
+                        <span>✕</span>
+                    </button>
+                </div>
+            </div>
+            <div class="pdf-viewer-content">
+                <iframe id="pdf-frame" frameborder="0"></iframe>
+                <div class="loading-spinner" id="pdf-loading">
+                    <div class="spinner"></div>
+                    <p>Chargement du document...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section ressources supplémentaires -->
+    <section class="resources-section">
+        <h2 class="resources-title">
+            <span class="title-icon">📚</span>
+            Ressources Complémentaires
+        </h2>
+        <div class="resources-grid">
+            <div class="resource-card">
+                <span class="resource-icon">📖</span>
+                <h3>Cours Magistral</h3>
+                <p>Notes de cours complètes</p>
+            </div>
+            <div class="resource-card">
+                <span class="resource-icon">🎥</span>
+                <h3>Vidéos Pratiques</h3>
+                <p>Démonstrations terrain</p>
+            </div>
+            <div class="resource-card">
+                <span class="resource-icon">📊</span>
+                <h3>Exercices</h3>
+                <p>TD et travaux pratiques</p>
+            </div>
+            <div class="resource-card">
+                <span class="resource-icon">💡</span>
+                <h3>Conseils</h3>
+                <p>Méthodologie et astuces</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer avec navigation -->
+    <footer class="module-footer">
+        <div class="footer-content">
+            <a href="modules.html" class="footer-btn btn-back">
+                <span class="btn-icon">⬅️</span>
+                <span class="btn-text">Retour aux modules</span>
+            </a>
+            <a href="index_agro.html" class="footer-btn btn-home">
+                <span class="btn-icon">🏠</span>
+                <span class="btn-text">Accueil</span>
+            </a>
+        </div>
+        <div class="footer-info">
+            <p>🌾 Institut d'Agronomie et Sciences de Gestion Agricole (IASGA)</p>
+        </div>
+    </footer>
+
+    <script src="script_prat_agr.js"></script>
+</body>
+</html>
