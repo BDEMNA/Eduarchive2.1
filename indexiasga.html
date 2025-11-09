@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IASGA - Institut d'Agronomie et Sciences de Gestion Agricole</title>
+    <link rel="stylesheet" href="style_indexiasga.css">
+</head>
+<body>
+    <!-- Overlay d'intro avec germination -->
+    <div id="intro-overlay" class="intro-overlay">
+        <div class="intro-content">
+            <div class="seed-germination">
+                <div class="seed"></div>
+                <div class="sprout"></div>
+                <div class="roots"></div>
+            </div>
+            <div class="growth-bar">
+                <div class="growth-progress">
+                    <div class="soil-layer"></div>
+                </div>
+            </div>
+            <p class="loading-text">Préparation du sol... Semis en cours...</p>
+        </div>
+    </div>
+
+    <!-- Fond animé avec champs ondulants -->
+    <div class="agricultural-bg">
+        <canvas id="field-canvas"></canvas>
+    </div>
+
+    <!-- Particules de pollen et graines -->
+    <div class="nature-particles" id="nature-particles"></div>
+
+    <!-- Cycle jour/nuit -->
+    <div class="sky-cycle" id="sky-cycle">
+        <div class="sun" id="sun"></div>
+        <div class="clouds">
+            <div class="cloud cloud-1"></div>
+            <div class="cloud cloud-2"></div>
+            <div class="cloud cloud-3"></div>
+        </div>
+    </div>
+
+    <!-- Pluie (désactivée par défaut) -->
+    <div class="rain-overlay" id="rain-overlay"></div>
+
+    <!-- Notification visuelle -->
+    <div id="notif" class="notification">
+        <span class="notif-icon">🌾</span>
+        <span class="notif-text">Bienvenue dans les champs du savoir</span>
+    </div>
+
+    <!-- Contenu principal -->
+    <div class="main-content">
+        <header class="header">
+            <div class="logo-container">
+                <img src="logo_eil.png" alt="Logo IASGA" class="logo">
+                <div class="logo-nature-glow"></div>
+                <div class="leaf-animation">
+                    <div class="leaf leaf-1">🍃</div>
+                    <div class="leaf leaf-2">🍃</div>
+                    <div class="leaf leaf-3">🍃</div>
+                </div>
+            </div>
+            
+            <div class="header-text">
+                <h1 class="title-main">
+                    <span class="title-word">
+                        <span class="title-letter nature-effect">A</span>
+                        <span class="title-letter nature-effect">G</span>
+                        <span class="title-letter nature-effect">R</span>
+                        <span class="title-letter nature-effect">O</span>
+                        <span class="title-letter nature-effect">N</span>
+                        <span class="title-letter nature-effect">O</span>
+                        <span class="title-letter nature-effect">M</span>
+                        <span class="title-letter nature-effect">I</span>
+                        <span class="title-letter nature-effect">E</span>
+                    </span>
+                </h1>
+                <div class="organic-line">
+                    <span class="plant-icon">🌱</span>
+                    <span class="typed-text" id="typed-text"></span>
+                    <span class="cursor-leaf">|</span>
+                </div>
+                <p class="subtitle">Institut d'Agronomie et Sciences de Gestion Agricole (IASGA)</p>
+            </div>
+        </header>
+
+        <!-- Saisons et météo -->
+        <div class="season-indicator">
+            <div class="season-display">
+                <span class="season-icon" id="season-icon">🌸</span>
+                <span class="season-name" id="season-name">Printemps</span>
+            </div>
+            <div class="weather-display">
+                <span class="weather-icon" id="weather-icon">☀️</span>
+                <span class="weather-temp" id="weather-temp">24°C</span>
+            </div>
+        </div>
+
+        <!-- Cycle de croissance / Progression -->
+        <div class="growth-tracker">
+            <div class="tracker-header">
+                <span class="tracker-icon">🌾</span>
+                <span class="tracker-title">CYCLE DE CROISSANCE</span>
+            </div>
+            <div class="growth-stages">
+                <div class="stage stage-seed" id="stage-1">
+                    <div class="stage-icon">🌰</div>
+                    <div class="stage-name">Semis</div>
+                    <div class="stage-progress"></div>
+                </div>
+                <div class="stage stage-sprout" id="stage-2">
+                    <div class="stage-icon">🌱</div>
+                    <div class="stage-name">Germination</div>
+                    <div class="stage-progress"></div>
+                </div>
+                <div class="stage stage-grow" id="stage-3">
+                    <div class="stage-icon">🌿</div>
+                    <div class="stage-name">Croissance</div>
+                    <div class="stage-progress"></div>
+                </div>
+                <div class="stage stage-bloom" id="stage-4">
+                    <div class="stage-icon">🌻</div>
+                    <div class="stage-name">Floraison</div>
+                    <div class="stage-progress"></div>
+                </div>
+                <div class="stage stage-harvest" id="stage-5">
+                    <div class="stage-icon">🌾</div>
+                    <div class="stage-name">Récolte</div>
+                    <div class="stage-progress"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistiques agricoles -->
+        <div class="stats-bar">
+            <div class="stat-item stat-field">
+                <div class="stat-icon-container">
+                    <span class="stat-icon">👨‍🌾</span>
+                    <div class="stat-pulse"></div>
+                </div>
+                <span class="stat-value" data-target="189">0</span>
+                <span class="stat-label">Agronomes</span>
+            </div>
+            <div class="stat-item stat-seed">
+                <div class="stat-icon-container">
+                    <span class="stat-icon">📚</span>
+                    <div class="stat-pulse"></div>
+                </div>
+                <span class="stat-value" data-target="14">0</span>
+                <span class="stat-label">Modules</span>
+            </div>
+            <div class="stat-item stat-harvest">
+                <div class="stat-icon-container">
+                    <span class="stat-icon">🌾</span>
+                    <div class="stat-pulse"></div>
+                </div>
+                <span class="stat-value" data-target="9">0</span>
+                <span class="stat-label">Parcelles</span>
+            </div>
+        </div>
+
+        <!-- Boutons principaux -->
+        <div class="btn-container">
+            <a href="modules.html" class="btn btn-primary">
+                <span class="btn-icon">📚</span>
+                <span class="btn-text">Accéder aux modules</span>
+                <div class="btn-nature-effect">
+                    <div class="vine-grow"></div>
+                </div>
+                <div class="btn-leaves">
+                    <span class="btn-leaf">🍃</span>
+                    <span class="btn-leaf">🍃</span>
+                    <span class="btn-leaf">🍃</span>
+                </div>
+            </a>
+            <a href="indisponible.html" class="btn btn-secondary">
+                <span class="btn-icon">📝</span>
+                <span class="btn-text">Voir les devoirs</span>
+                <div class="btn-nature-effect">
+                    <div class="vine-grow"></div>
+                </div>
+                <div class="btn-leaves">
+                    <span class="btn-leaf">🍃</span>
+                    <span class="btn-leaf">🍃</span>
+                    <span class="btn-leaf">🍃</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Journal agricole / Logs -->
+        <div class="farm-journal">
+            <div class="journal-header">
+                <div class="journal-decoration">
+                    <span class="deco-plant">🌿</span>
+                    <span class="journal-title">📖 JOURNAL DE CULTURE</span>
+                    <span class="deco-plant">🌿</span>
+                </div>
+                <div class="journal-date" id="journal-date">
+                    <span class="date-icon">📅</span>
+                    <span id="current-date">--/--/----</span>
+                </div>
+            </div>
+            <div class="journal-content" id="journal-content">
+                <div class="journal-entry">
+                    <span class="entry-icon">🌱</span>
+                    <span class="entry-time">[--:--:--]</span>
+                    <span class="entry-msg">Préparation du terrain...</span>
+                </div>
+            </div>
+            <div class="journal-footer">
+                <div class="soil-quality">
+                    <span class="quality-label">QUALITÉ DU SOL</span>
+                    <div class="quality-bar">
+                        <div class="quality-fill" id="soil-quality"></div>
+                    </div>
+                </div>
+                <div class="water-level">
+                    <span class="water-label">IRRIGATION</span>
+                    <div class="water-bar">
+                        <div class="water-fill" id="water-level"></div>
+                    </div>
+                </div>
+                <div class="nutrition-level">
+                    <span class="nutrition-label">NUTRIMENTS</span>
+                    <div class="nutrition-bar">
+                        <div class="nutrition-fill" id="nutrition-level"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Indicateur de travail agricole -->
+    <div class="farm-work-indicator">
+        <span class="work-icon">🚜</span>
+        <span class="work-text">CULTURE EN COURS</span>
+        <div class="work-dots">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
+
+    <!-- Tracteur animé (décoratif) -->
+    <div class="tractor-animation" id="tractor">
+        <span class="tractor-emoji">🚜</span>
+    </div>
+
+    <!-- Papillons volants -->
+    <div class="butterflies" id="butterflies"></div>
+
+    <script src="script_indexiasga.js"></script>
+</body>
+</html>
